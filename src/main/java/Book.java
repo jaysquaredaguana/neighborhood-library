@@ -17,7 +17,13 @@ public class Book {
         this.checkedOutTo = checkedOutTo;
     }
 
+    // Default constructor
     public Book() {
+        this.id = 0;
+        this.isbn = "";
+        this.title = "";
+        this.isCheckedOut = false;
+        this.checkedOutTo = "";
     }
 
     // Getters and Setters
