@@ -8,13 +8,13 @@ public class Book {
     private boolean isCheckedOut; // isCheckedOut: boolean
     private String checkedOutTo; // checkedOutTo: String
 
-    // Constructors
-    public Book(int id, String isbn, String title, boolean isCheckedOut, String checkedOutTo) {
+    // Constructor
+    public Book(int id, String isbn, String title) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
-        this.isCheckedOut = isCheckedOut;
-        this.checkedOutTo = checkedOutTo;
+        this.isCheckedOut = false;
+        this.checkedOutTo = "";
     }
 
     // Default constructor
