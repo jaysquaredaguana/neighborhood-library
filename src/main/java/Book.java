@@ -73,8 +73,8 @@ public class Book {
         setCheckedOut(true); // // isCheckedOut set to true
     }
 
-
     void checkIn() {
-
+        setCheckedOutTo(""); // checkedOutTo variable should be set to ""
+        setCheckedOut(false); // isCheckedOut variable should be set to false
     }
 }
