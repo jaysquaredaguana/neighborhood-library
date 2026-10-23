@@ -68,6 +68,13 @@ public class Book {
     }
 
     // Methods
-    void checkOut(String name) {}
-    void checkIn() {}
+    void checkOut(String name) {
+        setCheckedOutTo(name); // checkedOutTo set to the name provided
+        setCheckedOut(true); // // isCheckedOut set to true
+    }
+
+
+    void checkIn() {
+
+    }
 }
