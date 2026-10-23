@@ -41,7 +41,7 @@ public class Main {
 
             switch (command) {
                 case '1' -> showAvailableBooks(inventory, read);
-                case '2' -> showCheckedOutBooks();
+                case '2' -> showCheckedOutBooks(inventory, read);
                 default -> command = '3';
             }
         } while (command != '3');
@@ -96,5 +96,60 @@ public class Main {
         } while (command != '2');
     }
 
-    static void showCheckedOutBooks() {}
+    // This displays a list of all the books that are currently checked out.
+    // Display the Id, ISBN, Title and Name of the person who has the book checked out.
+    static void showCheckedOutBooks(Book[] inventory, Scanner read) {
+        int checkedOutCount = 0;
+        for (Book book : inventory) {
+            if (book.isCheckedOut()) {
+                System.out.println(book + " | Checked out to: " + book.getCheckedOutTo());
+                checkedOutCount++;
+            }
+        }
+        if (checkedOutCount == 0) {
+            System.out.println("There are no books currently checked out.");
+        }
+
+        // Prompt the user
+        char command;
+        do {
+            System.out.println("What do you want to do?");
+            System.out.println(" C - Check in a book");
+            System.out.println(" X - Go back to the home screen");
+            System.out.print("Enter your command: ");
+
+            command = read.nextLine().trim().toLowerCase().charAt(0);
+
+            // Check In a book - Prompt the user for the Id of the book they want to check in.
+            // Check in the book with the specified Id
+            // Go back to the home screen
+            if (command == 'c') {
+                System.out.print("Enter book ID: ");
+                int id = Integer.parseInt(read.nextLine().trim());
+
+                boolean found = false;
+
+                for (Book book : inventory) {
+                    if (book.getId() == id) {
+                        if (book.isCheckedOut()) {
+                            book.checkIn();
+                            System.out.println("Book checked in successfully.");
+                        } else {
+                            System.out.println("That book is not checked out.");
+                        }
+
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    System.out.println("Book ID not found.");
+                }
+            }
+            else {
+                command = '2';
+            }
+        } while (command != '2');
+    }
 }
