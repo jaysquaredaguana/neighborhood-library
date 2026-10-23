@@ -77,4 +77,11 @@ public class Book {
         setCheckedOutTo(""); // checkedOutTo variable should be set to ""
         setCheckedOut(false); // isCheckedOut variable should be set to false
     }
+
+    @Override
+    public String toString() {
+        return id +
+                " | isbn=" + isbn +
+                " | " + title;
+    }
 }
